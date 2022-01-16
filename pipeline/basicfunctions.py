@@ -15,10 +15,12 @@ import tempfile
 from collections import Counter
 from datetime import timedelta
 
+# pipe_dir = os.path.dirname(os.path.abspath(__file__))
+# dict_path = os.path.join(pipe_dir, "dictionaries")
+# tmp_db_path = os.path.join(pipe_dir, 'tmp_config.json')
 pipe_dir = os.path.dirname(os.path.abspath(__file__))
 dict_path = os.path.join(pipe_dir, "dictionaries")
-tmp_db_path = os.path.join(pipe_dir, 'tmp_config.json')
-
+tmp_db_path = os.path.join(os.getcwd(), 'tmp_config.json')
 
 class GeneralFunctions:
     @staticmethod

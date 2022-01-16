@@ -4127,7 +4127,8 @@ def main(mode=None):
 
     if mode == "auto":
         signal.signal(signal.SIGTERM, exitatsigterm)
-        os.chdir(os.path.join("/", "primerdesign"))
+        #os.chdir(os.path.join("/", "primerdesign"))
+        os.chdir(os.path.join(os.getcwd(), "primerdesign"))
         logfile = os.path.join(os.getcwd(), "speciesprimer_" + today + ".log")
         logging.basicConfig(
             filename=logfile, level=logging.DEBUG, format="%(message)s")
