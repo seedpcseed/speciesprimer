@@ -489,7 +489,8 @@ class DataCollection():
         def start_prokka(filename, fna):
             date = time.strftime("%Y%m%d")
             genus = self.target.split("_")[0]
-            outdir = filename + "_" + date
+            #outdir = filename + "_" + date
+            outdir = os.path.join(self.target_dir, filename + "_" + date)
             prokka_cmd = [
                 "prokka",
                 "--kingdom", "Bacteria",
