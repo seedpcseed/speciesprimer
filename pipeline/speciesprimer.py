@@ -35,6 +35,9 @@ dict_path = os.path.join(pipe_dir, "dictionaries")
 #tmp_db_path = os.path.join(pipe_dir, 'tmp_config.json')
 tmp_db_path = os.path.join(os.getcwd(), 'tmp_config.json')
 print("Current working directory: ", os.getcwd())
+print("Pipeline directory: ", pipe_dir)
+print("Dictionary directory: ", dict_path)
+print("tmp_db_path: ", tmp_db_path)
 
 errors = []
 
