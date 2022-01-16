@@ -30,8 +30,11 @@ from basicfunctions import BlastDBError
 
 # paths
 pipe_dir = os.path.dirname(os.path.abspath(__file__))
+#pipe_dir = pwd
+
 dict_path = os.path.join(pipe_dir, "dictionaries")
-tmp_db_path = os.path.join(pipe_dir, 'tmp_config.json')
+#tmp_db_path = os.path.join(pipe_dir, 'tmp_config.json')
+tmp_db_path = os.path.join(pwd, 'tmp_config.json')
 errors = []
 
 # general info
