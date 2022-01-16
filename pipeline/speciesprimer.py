@@ -4003,7 +4003,7 @@ def citation():
     return citation
 
 def auto_run():
-    tmp_db_path = os.path.join(pipe_dir, 'tmp_config.json')
+    tmp_db_path = os.path.join(os.getcwd(), 'tmp_config.json')
     with open(tmp_db_path, 'r') as f:
         for line in f:
             tmp_db = json.loads(line)
