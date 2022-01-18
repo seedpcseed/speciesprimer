@@ -96,6 +96,7 @@ class GeneralFunctions:
 
     @staticmethod
     def run_parallel(function, input_list, args=False, verbosity="bar"):
+        run_function = function
         outputlist = []
         total = len(input_list)
         start = None
@@ -117,9 +118,9 @@ class GeneralFunctions:
             #     future_seq = {
             #         executor.submit(function, item):
             #         item for item in input_list}
-                function_output = function(item)
+                function_output = run_function(item)
             else:
-                function_output = function(item, args)
+                function_output = run_function(item, args)
                 # future_seq = {
                 #     executor.submit(function, item, args):
                 #     item for item in input_list}
