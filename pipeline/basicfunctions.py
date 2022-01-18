@@ -111,7 +111,7 @@ class GeneralFunctions:
         #with ProcessPool as executor:
         #with concurrent.futures.ProcessPoolExecutor() as executor:
         #with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-        
+
         for item in input_list:
             if args is False:
             #     future_seq = {
@@ -634,7 +634,8 @@ class ParallelFunctions:
         GeneralFunctions().logger("> Start index non-target DB " + db_name)
         print("\nStart index " + db_name)
         start = time.time()
-        cmd = ["IndexDb.sh", inputfilepath, "9"]
+        #cmd = ["IndexDb.sh", inputfilepath, "9"]
+        cmd = ["IndexDb.py", inputfilepath, "9"]
         try:
             GeneralFunctions().run_subprocess(
                     cmd, True, True, False)
