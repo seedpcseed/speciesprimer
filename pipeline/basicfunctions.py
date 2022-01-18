@@ -111,8 +111,12 @@ class GeneralFunctions:
         if verbosity == "bar":
             ending = 50 * " "
             print('\rprogress ' + str(0) + " % [" + str(ending) + "]", end='')
+        #with ProcessPool as executor:
         #with concurrent.futures.ProcessPoolExecutor() as executor:
         #with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+        info = "Input list is length " + len(input_list) + " and looks like " + str(input_list)
+        print(info)
+        
         for item in input_list:
             if args is False:
             #     future_seq = {
