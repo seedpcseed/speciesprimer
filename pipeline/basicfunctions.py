@@ -140,13 +140,13 @@ class GeneralFunctions:
                     print(
                         '\rprogress ' + str(status) + " % ["
                         + str(start) + str(ending) + "]", end='')
-        except Exception as exc:
-            msg = (
-                '%r generated an exception: %s' % (item, exc)
-            )
-            print(msg)
-            GeneralFunctions().logger(msg)
-        print("\n")
+        # except Exception as exc:
+        #     msg = (
+        #         '%r generated an exception: %s' % (item, exc)
+        #     )
+        #     print(msg)
+        #     GeneralFunctions().logger(msg)
+        # print("\n")
         return outputlist
 
     @staticmethod
