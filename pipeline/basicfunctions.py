@@ -110,71 +110,42 @@ class GeneralFunctions:
         if verbosity == "bar":
             ending = 50 * " "
             print('\rprogress ' + str(0) + " % [" + str(ending) + "]", end='')
-        with concurrent.futures.ProcessPoolExecutor() as executor:
+        #with concurrent.futures.ProcessPoolExecutor() as executor:
         #with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+        for item in input_list:
             if args is False:
-                future_seq = {
-                    executor.submit(function, item):
-                    item for item in input_list}
+            #     future_seq = {
+            #         executor.submit(function, item):
+            #         item for item in input_list}
+                function_output = function(item)
             else:
-                future_seq = {
-                    executor.submit(function, item, args):
-                    item for item in input_list}
-
-            for future in concurrent.futures.as_completed(future_seq):
-                item = future_seq[future]
-                try:
-                    output = future.result()
-                    outputlist.append(output)
-                    if verbosity == "bar":
-                        percent = round(100 / total * len(outputlist), 0)
-                        if percent == percent // 1:
-                            status = int(percent)
-                            if status % 2 == 0:
-                                bar = int(status / 2)
-                                start = bar * "*"
-                                ending = (50 - bar) * " "
-                            print(
-                                '\rprogress ' + str(status) + " % ["
-                                + str(start) + str(ending) + "]", end='')
-                except Exception as exc:
-                    msg = (
-                        '%r generated an exception: %s' % (item, exc)
-                    )
-                    print(msg)
-                    GeneralFunctions().logger(msg)
-        # with mp.Queue() as executor:
-        #     if args is False:
-        #         future_seq = {
-        #             executor.Process(function, item):
-        #             item for item in input_list}
-        #     else:
-        #         future_seq = {
-        #             executor.Process(function, item, args):
-        #             item for item in input_list}
-        #     for future in concurrent.futures.as_completed(future_seq):
-        #         item = future_seq[future]
-        #         try:
-        #             output = future.result()
-        #             outputlist.append(output)
-        #             if verbosity == "bar":
-        #                 percent = round(100 / total * len(outputlist), 0)
-        #                 if percent == percent // 1:
-        #                     status = int(percent)
-        #                     if status % 2 == 0:
-        #                         bar = int(status / 2)
-        #                         start = bar * "*"
-        #                         ending = (50 - bar) * " "
-        #                     print(
-        #                         '\rprogress ' + str(status) + " % ["
-        #                         + str(start) + str(ending) + "]", end='')
-        #         except Exception as exc:
-        #             msg = (
-        #                 '%r generated an exception: %s' % (item, exc)
-        #             )
-        #             print(msg)
-        #             GeneralFunctions().logger(msg)
-
+                function_output = function(item, args)
+                # future_seq = {
+                #     executor.submit(function, item, args):
+                #     item for item in input_list}
+            outputlist.append(function_output)
+            # for future in concurrent.futures.as_completed(future_seq):
+            #     item = future_seq[future]
+            #     try:
+            #         output = future.result()
+            #         outputlist.append(output)
+            if verbosity == "bar":
+                percent = round(100 / total * len(outputlist), 0)
+                if percent == percent // 1:
+                    status = int(percent)
+                    if status % 2 == 0:
+                        bar = int(status / 2)
+                        start = bar * "*"
+                        ending = (50 - bar) * " "
+                    print(
+                        '\rprogress ' + str(status) + " % ["
+                        + str(start) + str(ending) + "]", end='')
+        except Exception as exc:
+            msg = (
+                '%r generated an exception: %s' % (item, exc)
+            )
+            print(msg)
+            GeneralFunctions().logger(msg)
         print("\n")
         return outputlist
 
