@@ -4211,4 +4211,7 @@ def main(mode=None):
 
 
 if __name__ == "__main__":
+    if "fork" in multiprocessing.get_all_start_methods():
+        multiprocessing.set_start_method("fork")  # Handles Mac/Linux
+    multiprocessing.freeze_support()  # Handles Windows
     main()

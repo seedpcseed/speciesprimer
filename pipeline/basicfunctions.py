@@ -10,7 +10,7 @@ import sys
 import json
 import shutil
 import multiprocessing
-multiprocessing.set_start_method('fork')
+#multiprocessing.set_start_method('fork')
 import concurrent.futures
 from Bio import Entrez
 import tempfile
@@ -101,8 +101,8 @@ class GeneralFunctions:
         start = None
         info = "Ready to start parallel for " + str(function)
         print(info)
-        ProcessPool = concurrent.futures.ProcessPoolExecutor(max_workers=multiprocessing.cpu_count())
-        #ProcessPool = concurrent.futures.ProcessPoolExecutor()
+        #ProcessPool = concurrent.futures.ProcessPoolExecutor(max_workers=multiprocessing.cpu_count())
+        ProcessPool = concurrent.futures.ProcessPoolExecutor()
         info = "Set up ProcessPool in run_parallel"
         print(info)
 
