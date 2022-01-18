@@ -9,7 +9,7 @@ import csv
 import sys
 import json
 import shutil
-import multiprocessing
+import multiprocessing as mp
 #multiprocessing.set_start_method('fork')
 import concurrent.futures
 from Bio import Entrez
@@ -111,7 +111,7 @@ class GeneralFunctions:
             ending = 50 * " "
             print('\rprogress ' + str(0) + " % [" + str(ending) + "]", end='')
         #with ProcessPool as executor:
-        with concurrent.futures.ProcessPoolExecutor() as executor:
+        with ThreadPoolExecutor(max_workers=1) as executor:
             if args is False:
                 future_seq = {
                     executor.submit(function, item):
@@ -143,6 +143,37 @@ class GeneralFunctions:
                     )
                     print(msg)
                     GeneralFunctions().logger(msg)
+        # with mp.Queue() as executor:
+        #     if args is False:
+        #         future_seq = {
+        #             executor.Process(function, item):
+        #             item for item in input_list}
+        #     else:
+        #         future_seq = {
+        #             executor.Process(function, item, args):
+        #             item for item in input_list}
+        #     for future in concurrent.futures.as_completed(future_seq):
+        #         item = future_seq[future]
+        #         try:
+        #             output = future.result()
+        #             outputlist.append(output)
+        #             if verbosity == "bar":
+        #                 percent = round(100 / total * len(outputlist), 0)
+        #                 if percent == percent // 1:
+        #                     status = int(percent)
+        #                     if status % 2 == 0:
+        #                         bar = int(status / 2)
+        #                         start = bar * "*"
+        #                         ending = (50 - bar) * " "
+        #                     print(
+        #                         '\rprogress ' + str(status) + " % ["
+        #                         + str(start) + str(ending) + "]", end='')
+        #         except Exception as exc:
+        #             msg = (
+        #                 '%r generated an exception: %s' % (item, exc)
+        #             )
+        #             print(msg)
+        #             GeneralFunctions().logger(msg)
 
         print("\n")
         return outputlist
