@@ -101,7 +101,8 @@ class GeneralFunctions:
         start = None
         info = "Ready to start parallel for " + str(function)
         print(info)
-        ProcessPool = concurrent.futures.ProcessPoolExecutor()
+        #ProcessPool = concurrent.futures.ProcessPoolExecutor(max_workers=multiprocessing.cpu_count())
+        ProcessPool = concurrent.futures.ProcessPoolExecutor(max_workers=1)
         info = "Set up ProcessPool in run_parallel"
         print(info)
 
