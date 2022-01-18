@@ -494,6 +494,9 @@ class ParallelFunctions:
     def get_seq_fromDB(extractdata, db):
         [accession, start, stop] = extractdata
         fasta = []
+        info = "Extracting data from " + extractdata + " in " + db + " database"
+        print(info)
+        
         seq_cmd = [
             "blastdbcmd", "-db", db, "-entry", str(accession),
             "-range", str(start) + "-" + str(stop), "-outfmt", "%f"]
