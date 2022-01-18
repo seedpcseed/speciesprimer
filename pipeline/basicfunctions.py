@@ -97,6 +97,7 @@ class GeneralFunctions:
         outputlist = []
         total = len(input_list)
         start = None
+        info = "Ready to start parallel for " + input_list
         ProcessPool = concurrent.futures.ProcessPoolExecutor()
         bar = 0
         if verbosity == "bar":
@@ -496,7 +497,7 @@ class ParallelFunctions:
         fasta = []
         info = "Extracting data from " + extractdata + " in " + db + " database"
         print(info)
-        
+
         seq_cmd = [
             "blastdbcmd", "-db", db, "-entry", str(accession),
             "-range", str(start) + "-" + str(stop), "-outfmt", "%f"]
