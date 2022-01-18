@@ -114,7 +114,7 @@ class GeneralFunctions:
         #with ProcessPool as executor:
         #with concurrent.futures.ProcessPoolExecutor() as executor:
         #with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-        info = "Input list is length " + len(input_list) + " and looks like "
+        info = "Input list: "
         print(info)
         print(input_list)
 
