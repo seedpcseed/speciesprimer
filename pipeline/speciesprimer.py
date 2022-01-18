@@ -30,7 +30,7 @@ from basicfunctions import BlastDBError
 
 # paths
 pipe_dir = os.path.dirname(os.path.abspath(__file__))
-#pipe_dir = pwd
+#pipe_dir = os.getcwd()
 dict_path = os.path.join(pipe_dir, "dictionaries")
 #tmp_db_path = os.path.join(pipe_dir, 'tmp_config.json')
 tmp_db_path = os.path.join(os.getcwd(), 'tmp_config.json')
@@ -4215,3 +4215,4 @@ if __name__ == "__main__":
         multiprocessing.set_start_method("fork")  # Handles Mac/Linux
     multiprocessing.freeze_support()  # Handles Windows
     main()
+

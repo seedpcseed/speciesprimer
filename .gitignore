@@ -4,3 +4,13 @@ __pycache__
 tmp*
 *cover
 .coverage
+*.bak
+*.ini
+*.dtd
+pipeline/Corynebacterium_accolens/config/config.json
+pipeline/Corynebacterium_accolens/config/genomic_links.txt
+pipeline/Corynebacterium_accolens/config/genomicdata.json
+pipeline/Corynebacterium_accolens/config/taxidlist.txt
+*.gz
+pipeline/Corynebacterium_accolens/pipeline_stats_2022_01_18.txt
+pipeline/speciesprimer_2022_01_18.log
