@@ -2369,7 +2369,7 @@ class BlastParser:
             filename = "BLASTnontarget" + str(part) + ".sequences"
             filepath = os.path.join(self.primer_qc_dir, filename)
             if not os.path.isfile(filepath):
-                info = "Start writing " + filename
+                info = "Start writing " + filename + "to " + filepath
                 print(info)
                 G.logger(info)
                 print("Start DB extraction")

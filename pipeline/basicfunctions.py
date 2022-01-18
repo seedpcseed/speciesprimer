@@ -97,7 +97,7 @@ class GeneralFunctions:
         outputlist = []
         total = len(input_list)
         start = None
-        ProcessPool = concurrent.futures.ProcessPoolExecutor(max_workers=1)
+        ProcessPool = concurrent.futures.ProcessPoolExecutor()
         bar = 0
         if verbosity == "bar":
             ending = 50 * " "
