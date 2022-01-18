@@ -10,6 +10,7 @@ import sys
 import json
 import shutil
 import multiprocessing
+multiprocessing.set_start_method('spawn', True)
 import concurrent.futures
 from Bio import Entrez
 import tempfile
