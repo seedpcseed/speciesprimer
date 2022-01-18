@@ -3071,6 +3071,9 @@ class PrimerQualityControl:
         for db in self.dbinputfiles:
             dblist.append(db)
         # parallelization try
+        info = "Preparing multiprocessing Pool for prepare_MFEprimer_Dbs"
+        print(info)
+        
         pool = multiprocessing.Pool()
         results = [
             pool.apply_async(P.index_database, args=(inputfilepath,))
@@ -4215,4 +4218,3 @@ if __name__ == "__main__":
         multiprocessing.set_start_method("fork")  # Handles Mac/Linux
     multiprocessing.freeze_support()  # Handles Windows
     main()
-
