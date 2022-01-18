@@ -97,7 +97,7 @@ class GeneralFunctions:
         outputlist = []
         total = len(input_list)
         start = None
-        info = "Ready to start parallel for " + input_list
+        info = "Ready to start parallel for " + str(function)
         ProcessPool = concurrent.futures.ProcessPoolExecutor()
         bar = 0
         if verbosity == "bar":
