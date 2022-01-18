@@ -104,9 +104,6 @@ class GeneralFunctions:
         print(info)
         #ProcessPool = concurrent.futures.ProcessPoolExecutor(max_workers=multiprocessing.cpu_count())
         #ProcessPool = concurrent.futures.ProcessPoolExecutor()
-        info = "Set up ProcessPool in run_parallel"
-        print(info)
-
         bar = 0
         if verbosity == "bar":
             ending = 50 * " "
@@ -114,10 +111,7 @@ class GeneralFunctions:
         #with ProcessPool as executor:
         #with concurrent.futures.ProcessPoolExecutor() as executor:
         #with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-        info = "Input list: "
-        print(info)
-        print(input_list)
-
+        
         for item in input_list:
             if args is False:
             #     future_seq = {
