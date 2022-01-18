@@ -102,33 +102,33 @@ class GeneralFunctions:
         start = None
         info = "Ready to start parallel for " + str(function)
         print(info)
-        #ProcessPool = concurrent.futures.ProcessPoolExecutor(max_workers=multiprocessing.cpu_count())
+        ProcessPool = concurrent.futures.ProcessPoolExecutor(max_workers=multiprocessing.cpu_count())
         #ProcessPool = concurrent.futures.ProcessPoolExecutor()
         bar = 0
         if verbosity == "bar":
             ending = 50 * " "
             print('\rprogress ' + str(0) + " % [" + str(ending) + "]", end='')
-        #with ProcessPool as executor:
+        with ProcessPool as executor:
         #with concurrent.futures.ProcessPoolExecutor() as executor:
         #with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
 
         for item in input_list:
             if args is False:
-            #     future_seq = {
-            #         executor.submit(function, item):
-            #         item for item in input_list}
-                function_output = run_function(item)
+                future_seq = {
+                    executor.submit(function, item):
+                    item for item in input_list}
+                #function_output = run_function(item)
             else:
-                function_output = run_function(item, args)
-                # future_seq = {
-                #     executor.submit(function, item, args):
-                #     item for item in input_list}
-            outputlist.append(function_output)
-            # for future in concurrent.futures.as_completed(future_seq):
-            #     item = future_seq[future]
-            #     try:
-            #         output = future.result()
-            #         outputlist.append(output)
+                #function_output = run_function(item, args)
+                future_seq = {
+                    executor.submit(function, item, args):
+                    item for item in input_list}
+            #outputlist.append(function_output)
+            for future in concurrent.futures.as_completed(future_seq):
+                item = future_seq[future]
+                try:
+                    output = future.result()
+                    outputlist.append(output)
             if verbosity == "bar":
                 percent = round(100 / total * len(outputlist), 0)
                 if percent == percent // 1:
