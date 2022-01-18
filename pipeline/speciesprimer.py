@@ -12,8 +12,6 @@ import signal
 import re
 import shutil
 import multiprocessing
-multiprocessing.set_start_method('spawn', True)
-import concurrent.futures
 import wget
 import json
 import urllib
