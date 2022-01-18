@@ -9,6 +9,7 @@ import csv
 import sys
 import json
 import shutil
+import multiprocessing
 import concurrent.futures
 from Bio import Entrez
 import tempfile
@@ -102,7 +103,7 @@ class GeneralFunctions:
         ProcessPool = concurrent.futures.ProcessPoolExecutor()
         info = "Set up ProcessPool in run_parallel"
         print(info)
-        
+
         bar = 0
         if verbosity == "bar":
             ending = 50 * " "
