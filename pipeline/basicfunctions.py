@@ -95,58 +95,103 @@ class GeneralFunctions:
         return outputlist
 
     @staticmethod
+    # def run_parallel(function, input_list, args=False, verbosity="bar"):
+    #     run_function = function
+    #     outputlist = []
+    #     total = len(input_list)
+    #     start = None
+    #     info = "Ready to start parallel for " + str(function)
+    #     print(info)
+    #     ProcessPool = concurrent.futures.ProcessPoolExecutor(max_workers=multiprocessing.cpu_count())
+    #     #ProcessPool = concurrent.futures.ProcessPoolExecutor()
+    #     bar = 0
+    #     if verbosity == "bar":
+    #         ending = 50 * " "
+    #         print('\rprogress ' + str(0) + " % [" + str(ending) + "]", end='')
+    #     with ProcessPool as executor:
+    #     #with concurrent.futures.ProcessPoolExecutor() as executor:
+    #     #with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+    #
+    #     for item in input_list:
+    #         if args is False:
+    #             future_seq = {
+    #                 executor.submit(function, item):
+    #                 item for item in input_list}
+    #             #function_output = run_function(item)
+    #         else:
+    #             #function_output = run_function(item, args)
+    #             future_seq = {
+    #                 executor.submit(function, item, args):
+    #                 item for item in input_list}
+    #         #outputlist.append(function_output)
+    #         for future in concurrent.futures.as_completed(future_seq):
+    #             item = future_seq[future]
+    #             try:
+    #                 output = future.result()
+    #                 outputlist.append(output)
+    #         if verbosity == "bar":
+    #             percent = round(100 / total * len(outputlist), 0)
+    #             if percent == percent // 1:
+    #                 status = int(percent)
+    #                 if status % 2 == 0:
+    #                     bar = int(status / 2)
+    #                     start = bar * "*"
+    #                     ending = (50 - bar) * " "
+    #                 print(
+    #                     '\rprogress ' + str(status) + " % ["
+    #                     + str(start) + str(ending) + "]", end='')
+    #     # except Exception as exc:
+    #     #     msg = (
+    #     #         '%r generated an exception: %s' % (item, exc)
+    #     #     )
+    #     #     print(msg)
+    #     #     GeneralFunctions().logger(msg)
+    #     # print("\n")
+    #     return outputlist
+
     def run_parallel(function, input_list, args=False, verbosity="bar"):
-        run_function = function
         outputlist = []
         total = len(input_list)
         start = None
-        info = "Ready to start parallel for " + str(function)
-        print(info)
-        ProcessPool = concurrent.futures.ProcessPoolExecutor(max_workers=multiprocessing.cpu_count())
-        #ProcessPool = concurrent.futures.ProcessPoolExecutor()
+        ProcessPool = concurrent.futures.ProcessPoolExecutor()
         bar = 0
         if verbosity == "bar":
             ending = 50 * " "
             print('\rprogress ' + str(0) + " % [" + str(ending) + "]", end='')
         with ProcessPool as executor:
-        #with concurrent.futures.ProcessPoolExecutor() as executor:
-        #with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-
-        for item in input_list:
             if args is False:
                 future_seq = {
                     executor.submit(function, item):
                     item for item in input_list}
-                #function_output = run_function(item)
             else:
-                #function_output = run_function(item, args)
                 future_seq = {
                     executor.submit(function, item, args):
                     item for item in input_list}
-            #outputlist.append(function_output)
+
             for future in concurrent.futures.as_completed(future_seq):
                 item = future_seq[future]
                 try:
                     output = future.result()
                     outputlist.append(output)
-            if verbosity == "bar":
-                percent = round(100 / total * len(outputlist), 0)
-                if percent == percent // 1:
-                    status = int(percent)
-                    if status % 2 == 0:
-                        bar = int(status / 2)
-                        start = bar * "*"
-                        ending = (50 - bar) * " "
-                    print(
-                        '\rprogress ' + str(status) + " % ["
-                        + str(start) + str(ending) + "]", end='')
-        # except Exception as exc:
-        #     msg = (
-        #         '%r generated an exception: %s' % (item, exc)
-        #     )
-        #     print(msg)
-        #     GeneralFunctions().logger(msg)
-        # print("\n")
+                    if verbosity == "bar":
+                        percent = round(100 / total * len(outputlist), 0)
+                        if percent == percent // 1:
+                            status = int(percent)
+                            if status % 2 == 0:
+                                bar = int(status / 2)
+                                start = bar * "*"
+                                ending = (50 - bar) * " "
+                            print(
+                                '\rprogress ' + str(status) + " % ["
+                                + str(start) + str(ending) + "]", end='')
+                except Exception as exc:
+                    msg = (
+                        '%r generated an exception: %s' % (item, exc)
+                    )
+                    print(msg)
+                    GeneralFunctions().logger(msg)
+
+        print("\n")
         return outputlist
 
     @staticmethod
