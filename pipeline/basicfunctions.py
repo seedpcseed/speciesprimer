@@ -580,7 +580,7 @@ class ParallelFunctions:
             result = GeneralFunctions().read_shelloutput(cmd)
         os.unlink(primefile.name)
         print("==============================================")
-        info = "Current primer is " + primername
+        info = "Current primer file name is " + primefile.name
         print(info)
         print("Printing result of mfeprimer")
         print(*result, sep = "\n")
