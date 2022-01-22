@@ -579,8 +579,13 @@ class ParallelFunctions:
         while result == []:
             result = GeneralFunctions().read_shelloutput(cmd)
         os.unlink(primefile.name)
+        print("==============================================")
+        info = "Current primer is " + primername
+        print(info)
         print("Printing result of mfeprimer")
         print(*result, sep = "\n")
+        info = "Length of current result = " + len(result)
+        print(info)
         if len(result) == 2:
             val = result[1].split("\t")
             pp_F = "_".join(val[1].split("_")[0:-1])
