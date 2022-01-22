@@ -3107,6 +3107,9 @@ class PrimerQualityControl:
         G.logger("Run: MFEprimer_QC(" + self.target + ")")
         info_msg = "Start primer quality control(" + self.target + ")"
         print(info_msg)
+        info_msg = "primerinfos = " + primerinfos
+        print(info_msg)
+
         G.logger("> " + info_msg)
         os.chdir(self.primer_qc_dir)
 
