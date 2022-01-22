@@ -3073,7 +3073,7 @@ class PrimerQualityControl:
         # parallelization try
         info = "Preparing multiprocessing Pool for prepare_MFEprimer_Dbs"
         print(info)
-        
+
         pool = multiprocessing.Pool()
         results = [
             pool.apply_async(P.index_database, args=(inputfilepath,))
