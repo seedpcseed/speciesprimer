@@ -586,6 +586,9 @@ class ParallelFunctions:
             p_F = "_".join(val[1].split("_")[0:-2])
             primername = val[3]
             ppc = float(val[4])
+            info = "MFEprimer Template Information " + pp_F + pp_R + ppc
+            print(info)
+            
             if (
                 pp_F == pp_R and p_F == primername
                 and ppc >= float(mfethreshold)
