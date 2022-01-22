@@ -679,7 +679,7 @@ class ParallelFunctions:
         GeneralFunctions().logger("> Start index non-target DB " + db_name)
         print("\nStart index " + db_name)
         start = time.time()
-        cmd = ["mfeprimer index", "-f", "-i", inputfilepath]
+        cmd = ["mfeprimer", "index", "-f", "-i", inputfilepath]
         try:
             GeneralFunctions().run_subprocess(
                     cmd, True, True, False)
