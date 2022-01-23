@@ -579,14 +579,13 @@ class ParallelFunctions:
         while result == []:
             result = GeneralFunctions().read_shelloutput(cmd)
         os.unlink(primefile.name)
-        print("==============================================")
-        info = "Current primer file is " + primefile.name
-        print(info)
-        info = "Length of current result = " + len(result)
-        print(info)
-        print("Printing result of mfeprimer")
-        print(*result, sep = "\n")
-
+        # print("==============================================")
+        # info = "Current primer file is " + primefile.name
+        # print(info)
+        # info = "Length of current result = " + len(result)
+        # print(info)
+        # print("Printing result of mfeprimer")
+        # print(*result, sep = "\n")
         if len(result) == 2:
             val = result[1].split("\t")
             pp_F = "_".join(val[1].split("_")[0:-1])
@@ -594,9 +593,8 @@ class ParallelFunctions:
             p_F = "_".join(val[1].split("_")[0:-2])
             primername = val[3]
             ppc = float(val[4])
-            info = "MFEprimer Template Information " + pp_F + pp_R + ppc
-            print(info)
-
+            # info = "MFEprimer Template Information " + pp_F + pp_R + ppc
+            # print(info)
             if (
                 pp_F == pp_R and p_F == primername
                 and ppc >= float(mfethreshold)
