@@ -573,7 +573,7 @@ class ParallelFunctions:
                 ">" + nameF + "\n" + seqF + "\n>" + nameR + "\n" + seqR + "\n")
 
         db = "template.sequences"
-         cmd = [
+        cmd = [
             "MFEprimer.py", "-i", primefile.name, "-d", db,
             "-k", "9", "--tab", "--ppc", "10"]
         while result == []:
@@ -619,7 +619,7 @@ class ParallelFunctions:
         # cmd = [
         #     "mfeprimer", "-i", primefile.name, "-d", dbfile,
         #     "-k", "9"]
-         cmd = [
+        cmd = [
             "MFEprimer.py", "-i", primefile.name, "-d", db,
             "-k", "9", "--tab", "--ppc", "10"]
         while result == []:
@@ -650,7 +650,7 @@ class ParallelFunctions:
         # cmd = [
         #     "mfeprimer", "-i", primefile.name, "-d", db,
         #     "-k", "9"]
-         cmd = [
+        cmd = [
             "MFEprimer.py", "-i", primefile.name, "-d", db,
             "-k", "9", "--tab", "--ppc", "10"]
         while result == []:
