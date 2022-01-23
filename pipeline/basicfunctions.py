@@ -620,7 +620,7 @@ class ParallelFunctions:
         #     "mfeprimer", "-i", primefile.name, "-d", dbfile,
         #     "-k", "9"]
         cmd = [
-            "MFEprimer.py", "-i", primefile.name, "-d", db,
+            "MFEprimer.py", "-i", primefile.name, "-d", dbfile,
             "-k", "9", "--tab", "--ppc", "10"]
         while result == []:
             result = GeneralFunctions().read_shelloutput(cmd)
