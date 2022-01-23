@@ -616,9 +616,12 @@ class ParallelFunctions:
         ) as primefile:
             primefile.write(
                 ">" + nameF + "\n" + seqF + "\n>" + nameR + "\n" + seqR + "\n")
-        cmd = [
-            "mfeprimer", "-i", primefile.name, "-d", dbfile,
-            "-k", "9"]
+        # cmd = [
+        #     "mfeprimer", "-i", primefile.name, "-d", dbfile,
+        #     "-k", "9"]
+         cmd = [
+            "MFEprimer.py", "-i", primefile.name, "-d", db,
+            "-k", "9", "--tab", "--ppc", "10"]
         while result == []:
             result = GeneralFunctions().read_shelloutput(cmd)
         os.unlink(primefile.name)
@@ -644,9 +647,12 @@ class ParallelFunctions:
         ) as primefile:
             primefile.write(
                 ">" + nameF + "\n" + seqF + "\n>" + nameR + "\n" + seqR + "\n")
-        cmd = [
-            "mfeprimer", "-i", primefile.name, "-d", db,
-            "-k", "9"]
+        # cmd = [
+        #     "mfeprimer", "-i", primefile.name, "-d", db,
+        #     "-k", "9"]
+         cmd = [
+            "MFEprimer.py", "-i", primefile.name, "-d", db,
+            "-k", "9", "--tab", "--ppc", "10"]
         while result == []:
             result = GeneralFunctions().read_shelloutput(cmd)
         os.unlink(primefile.name)
@@ -688,7 +694,8 @@ class ParallelFunctions:
         GeneralFunctions().logger("> Start index non-target DB " + db_name)
         print("\nStart index " + db_name)
         start = time.time()
-        cmd = ["mfeprimer", "index", "-f", "-i", inputfilepath]
+        # cmd = ["mfeprimer", "index", "-f", "-i", inputfilepath]
+        cmd = ["IndexDb.sh", inputfilepath, "9"]
         try:
             GeneralFunctions().run_subprocess(
                     cmd, True, True, False)
